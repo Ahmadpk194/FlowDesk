@@ -98,7 +98,7 @@ export default function LoginForm() {
                 </Link>
 
                 {/* Card */}
-                <div className="bg-white w-full p-8 rounded-md border border-[#E2E8F0] shadow-xl shadow-indigo-50/50">
+                <div className="bg-white w-full px-6 py-8 rounded-md border border-[#E2E8F0] shadow-xl shadow-indigo-50/50">
 
                     <div className="mb-8 text-center">
                         <h2 className="text-[22px] font-semibold text-[#0d1c2e]">
@@ -123,7 +123,7 @@ export default function LoginForm() {
                                 onChange={handleChange}
                                 type="email"
                                 placeholder="name@company.com"
-                                className="w-full h-11 px-5 bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg outline-none focus:border-[#4338CA] focus:ring-4 focus:ring-indigo-50 transition-all text-[15px]"
+                                className="w-full h-11 pl-3 pr-5 bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg outline-none focus:border-[#4338CA] focus:ring-4 focus:ring-indigo-50 transition-all text-[15px]"
                             />
 
                             {errors.email && (
@@ -146,7 +146,7 @@ export default function LoginForm() {
                                     onChange={handleChange}
                                     type={showPassword ? 'text' : 'password'}
                                     placeholder="••••••••"
-                                    className="w-full h-11 pl-5 pr-12 bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg outline-none focus:border-[#4338CA] focus:ring-4 focus:ring-indigo-50 transition-all text-[15px]"
+                                    className="w-full h-11 pl-3 pr-12 bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg outline-none focus:border-[#4338CA] focus:ring-4 focus:ring-indigo-50 transition-all text-[15px]"
                                 />
 
                                 <button
