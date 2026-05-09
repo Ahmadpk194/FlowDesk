@@ -115,13 +115,26 @@ export default function Sidebar({ role, navItems, onNavigate }: SidebarProps) {
       <div className="p-3 sm:p-4 border-t border-[#E2E8F0]">
         <div className={`text-xs text-gray-500 text-center ${isCollapsed ? 'hidden' : 'block'}`}>
           <p>Created by</p>
-          <p className="font-medium text-gray-700">Ahmad Khan</p>
+          <a 
+            href="https://www.linkedin.com/in/ahmad-khan-974203a8/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="font-medium text-[#4338CA] hover:underline transition-all"
+          >
+            Ahmad Khan
+          </a>
         </div>
         {isCollapsed && (
           <div className="text-center">
-            <div className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center mx-auto">
-              <span className="text-xs text-gray-600 font-bold">AK</span>
-            </div>
+            <a 
+              href="https://www.linkedin.com/in/ahmad-khan-974203a8/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-8 h-8 bg-[#4338CA]/10 text-[#4338CA] rounded-full flex items-center justify-center mx-auto hover:bg-[#4338CA] hover:text-white transition-all group"
+              title="Created by Ahmad Khan"
+            >
+              <span className="text-[10px] font-bold">AK</span>
+            </a>
           </div>
         )}
       </div>
