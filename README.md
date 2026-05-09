@@ -1,96 +1,115 @@
-# FlowDesk Web
+# 🚀 FlowDesk Web
 
-> **Created by:** Ahmad Khan
-> **Tech Stack:** Next.js 15 | TailwindCSS | Lucide React | Sonner
+> **Enterprise-grade Request Approval System**
+> Built by **[Ahmad Khan](https://www.linkedin.com/in/ahmad-khan-974203a8/)**
 
-FlowDesk Web is the modern, responsive frontend for the FlowDesk request approval system. It provides an elegant interface for employees to submit requests, managers to approve/reject them, and admins to manage users.
+[![Next.js](https://img.shields.io/badge/Next.js-16.2.6-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
----
-
-## Features
-
-### 🏢 Dashboards
-- **Employee Dashboard**: Create, view, update, and cancel personal requests.
-- **Manager Dashboard**: Review all company requests with real-time status filtering.
-- **Admin Dashboard**: Comprehensive user management, role assignment, and system monitoring.
-
-### 🔐 Authentication
-- Secure JWT-based authentication flow.
-- Role-Based Access Control (RBAC) enforced at the UI and routing level.
-- Custom login and registration experiences.
-
-### 🎨 Design & UX
-- **Elegant Landing Page**: Professional branding with a clear focus on the request lifecycle.
-- **Responsive Design**: Fully optimized for mobile, tablet, and desktop viewing.
-- **Glassmorphism & Micro-animations**: Premium look and feel with smooth transitions.
+FlowDesk Web is a high-performance, responsive frontend built for a sophisticated request approval lifecycle. It features a robust Role-Based Access Control (RBAC) system, elegant micro-animations, and a mobile-first design aesthetic.
 
 ---
 
-## Getting Started
+## ✨ Key Features
+
+### 🏢 Intelligent Dashboards
+- **👨‍💼 Employee Hub**: Seamlessly create, track, and manage personal requests. Features real-time status updates and cancellation logic.
+- **🛡️ Manager Portal**: A centralized command center for reviewing, approving, or rejecting requests with mandatory feedback loops.
+- **⚙️ Admin Console**: Full-scale user management, role delegation, and system health monitoring.
+
+### 🔐 Security & Architecture
+- **JWT-Powered Auth**: Secure, stateless authentication with automated token handling.
+- **Deep RBAC**: Navigation and API interactions are strictly enforced based on user roles.
+- **Validation**: Strict schema validation using **Zod** for both form inputs and API responses.
+
+### 🎨 Premium UX/UI
+- **Responsive Mastery**: Fluid layouts that adapt perfectly from 4K monitors to mobile devices.
+- **Glassmorphism**: Modern UI components with subtle transparency and blur effects.
+- **Instant Feedback**: Toast notifications via **Sonner** for every critical action.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 16.2.6](https://nextjs.org/) (App Router)
+- **Styling**: [TailwindCSS 4](https://tailwindcss.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Notifications**: [Sonner](https://sonner.steventey.com/)
+- **Type Safety**: [TypeScript](https://www.typescriptlang.org/) & [Zod](https://zod.dev/)
+- **State Management**: React Context API (Auth-aware)
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) v18+
-- [npm](https://www.npmjs.com/) v9+
+- **Node.js**: v18.0.0 or higher
+- **npm**: v9.0.0 or higher
 
 ### Installation
 
 ```bash
-# Clone the repository
+# 1. Clone the repository
 git clone <repository-url>
 
-# Install dependencies
+# 2. Install dependencies
 npm install
+
+# 3. Setup Environment Variables
+cp .env.example .env.local
 ```
 
-### Environment Setup
+### Environment Configuration
 
-Create a `.env.local` file in the root directory:
+Configure your `.env.local` with the following:
 
 ```env
 NEXT_PUBLIC_API_URL=https://flowdesk-backend-production-706d.up.railway.app/api/v1
 ```
 
-### Development
+### Run Locally
 
 ```bash
-# Run the development server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit [http://localhost:3000](http://localhost:3000) to see the app in action.
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
-```
+```text
 app/
-├── (auth)/          # Authentication routes (Login, Register)
-├── dashboard/       # Role-based dashboards
-│   ├── employee/
-│   ├── manager/
-│   └── admin/
-├── api/             # Next.js API routes (if any)
-└── page.tsx         # Elegant Landing Page
-components/          # Reusable UI components
+├── (auth)/             # Authentication flow (Login/Register)
+├── dashboard/          # Role-specific dashboard layouts
+│   ├── admin/          # User & System management
+│   ├── employee/       # Personal request tracking
+│   └── manager/        # Approval workflow
+├── globals.css         # Tailwind & Custom design tokens
+└── layout.tsx          # Root provider & Layout wrapper
+components/
+├── auth/               # Auth-specific components
+├── dashboard/          # Reusable dashboard widgets
+└── ui/                 # Custom high-quality UI components (Modals, etc.)
 lib/
-├── api/             # API service layers (Axios/Fetch)
-└── utils/           # Helper functions & JWT logic
-context/             # Auth & Global state providers
-types/               # TypeScript definitions
+├── api/                # Modular API service layers (Axios/Fetch)
+└── utils/              # JWT decoding & helper functions
+context/                # Global Auth & State providers
+types/                  # Centralized TypeScript definitions
 ```
 
 ---
 
-## Business Rules Implemented
+## 📜 Business Rules & Logic
 
-1. **Role Guarding**: Navigation is strictly controlled based on the user's role stored in the JWT.
-2. **Request Lifecycle**: UI reflects the immutable nature of `APPROVED` or `REJECTED` requests.
-3. **Admin Safety**: Built-in protections to prevent admins from deleting their own accounts.
-4. **Data Normalization**: Centralized utility to handle varying backend ID formats (`_id` vs `uuid`).
+1. **Immutable States**: Once a request is `APPROVED` or `REJECTED`, it becomes immutable to maintain audit integrity.
+2. **Role Guarding**: Users are automatically redirected if they attempt to access routes outside their permission level.
+3. **Smart Normalization**: A unified utility handles different backend ID structures (`_id` vs `uuid`) seamlessly.
 
 ---
 
-*FlowDesk Web — Built with Next.js and TailwindCSS.*
-*Created by **Ahmad Khan**.*
+Developed with ❤️ by **[Ahmad Khan](https://www.linkedin.com/in/ahmad-khan-974203a8/)**.

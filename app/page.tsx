@@ -27,6 +27,21 @@ export default function Home() {
   const handleLogout = async () => {
     await logout();
   };
+
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      const navHeight = 64; // Height of the fixed navbar
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
   return (
     <div className="flex flex-col min-h-screen bg-[#F8FAFC]">
       {/* Navigation */}
@@ -41,9 +56,9 @@ export default function Home() {
             </Link>
             
             <div className="hidden md:flex items-center gap-8 text-sm font-medium text-[#64748B]">
-              <a href="#how-it-works" className="hover:text-[#4338CA] transition-colors">How it Works</a>
-              <a href="#roles" className="hover:text-[#4338CA] transition-colors">Roles</a>
-              <a href="#security" className="hover:text-[#4338CA] transition-colors">Security</a>
+              <a href="#how-it-works" onClick={(e) => scrollToSection(e, "how-it-works")} className="hover:text-[#4338CA] transition-colors">How it Works</a>
+              <a href="#roles" onClick={(e) => scrollToSection(e, "roles")} className="hover:text-[#4338CA] transition-colors">Roles</a>
+              <a href="#security" onClick={(e) => scrollToSection(e, "security")} className="hover:text-[#4338CA] transition-colors">Security</a>
             </div>
 
             <div className="flex items-center gap-3">
@@ -299,7 +314,14 @@ export default function Home() {
 
             <div className="flex items-center gap-2 text-sm font-medium text-[#464554]">
                <span className="text-[#64748B]">Created by</span>
-               <span className="bg-[#4338CA]/10 text-[#4338CA] px-3 py-1 rounded-full text-xs font-bold tracking-wide">Ahmad Khan</span>
+               <a 
+                 href="https://www.linkedin.com/in/ahmad-khan-974203a8/" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 className="bg-[#4338CA]/10 text-[#4338CA] px-3 py-1 rounded-full text-xs font-bold tracking-wide hover:bg-[#4338CA] hover:text-white transition-all duration-300"
+               >
+                 Ahmad Khan
+               </a>
             </div>
           </div>
         </div>
