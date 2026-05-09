@@ -85,7 +85,7 @@ export default function LoginForm() {
 
     return (
         <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center p-4">
-            <div className="w-full max-w-[480px] flex flex-col items-center">
+            <div className="w-full max-w-[550px] flex flex-col items-center">
 
                 {/* Logo */}
                 <Link href="/" className="flex flex-col items-center gap-3 mb-6 hover:opacity-80 transition-opacity">
@@ -98,7 +98,7 @@ export default function LoginForm() {
                 </Link>
 
                 {/* Card */}
-                <div className="bg-white w-full px-6 py-8 rounded-md border border-[#E2E8F0] shadow-xl shadow-indigo-50/50">
+                <div className="bg-white w-full p-8 rounded-md border border-[#E2E8F0] shadow-xl shadow-indigo-50/50">
 
                     <div className="mb-8 text-center">
                         <h2 className="text-[22px] font-semibold text-[#0d1c2e]">
