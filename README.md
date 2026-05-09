@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FlowDesk Web
+
+> **Created by:** Ahmad Khan
+> **Tech Stack:** Next.js 15 | TailwindCSS | Lucide React | Sonner
+
+FlowDesk Web is the modern, responsive frontend for the FlowDesk request approval system. It provides an elegant interface for employees to submit requests, managers to approve/reject them, and admins to manage users.
+
+---
+
+## Features
+
+### 🏢 Dashboards
+- **Employee Dashboard**: Create, view, update, and cancel personal requests.
+- **Manager Dashboard**: Review all company requests with real-time status filtering.
+- **Admin Dashboard**: Comprehensive user management, role assignment, and system monitoring.
+
+### 🔐 Authentication
+- Secure JWT-based authentication flow.
+- Role-Based Access Control (RBAC) enforced at the UI and routing level.
+- Custom login and registration experiences.
+
+### 🎨 Design & UX
+- **Elegant Landing Page**: Professional branding with a clear focus on the request lifecycle.
+- **Responsive Design**: Fully optimized for mobile, tablet, and desktop viewing.
+- **Glassmorphism & Micro-animations**: Premium look and feel with smooth transitions.
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) v18+
+- [npm](https://www.npmjs.com/) v9+
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone <repository-url>
+
+# Install dependencies
+npm install
+```
+
+### Environment Setup
+
+Create a `.env.local` file in the root directory:
+
+```env
+NEXT_PUBLIC_API_URL=https://flowdesk-backend-production-706d.up.railway.app/api/v1
+```
+
+### Development
+
+```bash
+# Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
-## Learn More
+```
+app/
+├── (auth)/          # Authentication routes (Login, Register)
+├── dashboard/       # Role-based dashboards
+│   ├── employee/
+│   ├── manager/
+│   └── admin/
+├── api/             # Next.js API routes (if any)
+└── page.tsx         # Elegant Landing Page
+components/          # Reusable UI components
+lib/
+├── api/             # API service layers (Axios/Fetch)
+└── utils/           # Helper functions & JWT logic
+context/             # Auth & Global state providers
+types/               # TypeScript definitions
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Business Rules Implemented
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Role Guarding**: Navigation is strictly controlled based on the user's role stored in the JWT.
+2. **Request Lifecycle**: UI reflects the immutable nature of `APPROVED` or `REJECTED` requests.
+3. **Admin Safety**: Built-in protections to prevent admins from deleting their own accounts.
+4. **Data Normalization**: Centralized utility to handle varying backend ID formats (`_id` vs `uuid`).
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*FlowDesk Web — Built with Next.js and TailwindCSS.*
+*Created by **Ahmad Khan**.*

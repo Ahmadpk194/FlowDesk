@@ -5,9 +5,11 @@ import { useRouter } from 'next/navigation';
 import { Layers, Eye, EyeOff, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 
+import Link from 'next/link';
 import { loginSchema } from '@/schemas/auth.schema';
 import { loginUser } from '@/lib/api/auth.api';
 import { useAuth } from '@/context/auth-context';
+import { getUserRoleFromToken, getRoleBasedRedirect } from '@/lib/utils/jwt';
 
 export default function LoginForm() {
     const router = useRouter();
@@ -60,11 +62,18 @@ export default function LoginForm() {
             // backend: { success: true, data: { accessToken } }
             const token = res.data.accessToken;
 
+            // Extract user role from token
+            const userRole = getUserRoleFromToken(token);
+            const redirectPath = getRoleBasedRedirect(userRole || 'employee');
+
             login(token); // store token
 
-            toast.success('Login successful');
+            toast.success(`Welcome! Redirecting to ${userRole} dashboard...`);
 
-            router.push('/dashboard');
+            // Redirect based on user role with setTimeout to avoid router initialization error
+            setTimeout(() => {
+                router.push(redirectPath);
+            }, 0);
         } catch (err) {
             toast.error(
                 err instanceof Error ? err.message : 'Login failed'
@@ -76,17 +85,17 @@ export default function LoginForm() {
 
     return (
         <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center p-4">
-            <div className="w-full min-w-[400px] flex flex-col items-center">
+            <div className="w-full max-w-[400px] flex flex-col items-center">
 
                 {/* Logo */}
-                <div className="flex flex-col items-center gap-2 mb-4">
-                    <div className="w-11 h-11 bg-[#4338CA] rounded-xl flex items-center justify-center">
+                <Link href="/" className="flex flex-col items-center gap-2 mb-4 hover:opacity-80 transition-opacity">
+                    <div className="w-11 h-11 bg-[#4338CA] rounded-xl flex items-center justify-center shadow-sm">
                         <Layers className="w-6 h-6 text-white" />
                     </div>
                     <h1 className="text-4xl font-semibold text-[#2a14b4]">
                         FlowDesk
                     </h1>
-                </div>
+                </Link>
 
                 {/* Card */}
                 <div className="bg-white w-full p-8 rounded-2xl border border-[#E2E8F0] shadow-sm">

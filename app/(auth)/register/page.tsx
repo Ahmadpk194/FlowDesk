@@ -10,6 +10,8 @@ import { registerUser } from '@/lib/api/auth.api';
 import { useAuth } from '@/context/auth-context';
 import { email } from 'zod';
 
+import Link from 'next/link';
+
 export default function RegisterForm() {
     const router = useRouter();
     // const { login } = useAuth();
@@ -88,15 +90,15 @@ export default function RegisterForm() {
             <div className="w-full max-w-[400px] flex flex-col items-center">
 
                 {/* Logo */}
-                <div className="flex flex-col items-center gap-2 mb-3">
-                    <div className="w-11 h-11 bg-[#4338CA] rounded-xl flex items-center justify-center">
+                <Link href="/" className="flex flex-col items-center gap-2 mb-3 hover:opacity-80 transition-opacity">
+                    <div className="w-11 h-11 bg-[#4338CA] rounded-xl flex items-center justify-center shadow-sm">
                         <Layers className="w-6 h-6 text-white" />
                     </div>
 
                     <h1 className="text-3xl font-semibold text-[#2a14b4] tracking-tight">
                         FlowDesk
                     </h1>
-                </div>
+                </Link>
 
                 {/* Card */}
                 <div className="bg-white w-full px-8 py-6 rounded-2xl border border-[#E2E8F0] shadow-sm">
