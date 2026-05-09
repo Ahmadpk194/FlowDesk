@@ -85,7 +85,7 @@ export default function LoginForm() {
 
     return (
         <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center p-4">
-            <div className="w-full max-w-[440px] flex flex-col items-center">
+            <div className="w-full max-w-[480px] flex flex-col items-center">
 
                 {/* Logo */}
                 <Link href="/" className="flex flex-col items-center gap-3 mb-6 hover:opacity-80 transition-opacity">
@@ -98,7 +98,7 @@ export default function LoginForm() {
                 </Link>
 
                 {/* Card */}
-                <div className="bg-white w-full p-10 rounded-3xl border border-[#E2E8F0] shadow-xl shadow-indigo-50/50">
+                <div className="bg-white w-full p-10 rounded-md border border-[#E2E8F0] shadow-xl shadow-indigo-50/50">
 
                     <div className="mb-8 text-center">
                         <h2 className="text-[22px] font-semibold text-[#0d1c2e]">
@@ -123,7 +123,7 @@ export default function LoginForm() {
                                 onChange={handleChange}
                                 type="email"
                                 placeholder="name@company.com"
-                                className="w-full h-12 px-5 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl outline-none focus:border-[#4338CA] focus:ring-4 focus:ring-indigo-50 transition-all text-[15px]"
+                                className="w-full h-11 px-5 bg-[#F8FAFC] border border-[#E2E8F0] rounded-md outline-none focus:border-[#4338CA] focus:ring-4 focus:ring-indigo-50 transition-all text-[15px]"
                             />
 
                             {errors.email && (
@@ -146,7 +146,7 @@ export default function LoginForm() {
                                     onChange={handleChange}
                                     type={showPassword ? 'text' : 'password'}
                                     placeholder="••••••••"
-                                    className="w-full h-12 pl-5 pr-12 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl outline-none focus:border-[#4338CA] focus:ring-4 focus:ring-indigo-50 transition-all text-[15px]"
+                                    className="w-full h-11 pl-5 pr-12 bg-[#F8FAFC] border border-[#E2E8F0] rounded-md outline-none focus:border-[#4338CA] focus:ring-4 focus:ring-indigo-50 transition-all text-[15px]"
                                 />
 
                                 <button
@@ -176,7 +176,7 @@ export default function LoginForm() {
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="w-full h-12 bg-[#4338CA] text-white rounded-xl flex items-center justify-center gap-2 disabled:opacity-70 font-bold text-[16px] shadow-lg shadow-indigo-100 hover:bg-[#372abf] hover:-translate-y-0.5 active:translate-y-0 transition-all"
+                                className="w-full h-11 bg-[#4338CA] text-white rounded-md flex items-center justify-center gap-2 disabled:opacity-70 font-bold text-[16px] shadow-lg shadow-indigo-100 hover:bg-[#372abf] hover:-translate-y-0.5 active:translate-y-0 transition-all"
                             >
                                 {loading ? (
                                     <>
