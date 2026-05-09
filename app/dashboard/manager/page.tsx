@@ -21,13 +21,13 @@ export default function ManagerDashboard() {
   const [stats, setStats] = useState<RequestStats | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const filteredRequests = (requests || []).filter(req => 
-    req.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+  const filteredRequests = (requests || []).filter(req =>
+    req.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     req.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
     (req.createdBy?.name || '').toLowerCase().includes(searchTerm.toLowerCase())
   );
   const [refreshKey, setRefreshKey] = useState(0);
-  
+
   // Modal state
   const [rejectModalOpen, setRejectModalOpen] = useState(false);
   const [selectedRequest, setSelectedRequest] = useState<Request | null>(null);
@@ -37,7 +37,7 @@ export default function ManagerDashboard() {
       if (!isSilent) setLoading(true);
       // Fetch pending requests specifically for the table
       const response = await getAllRequests({ status: RequestStatus.PENDING });
-      
+
       let requestData: Request[] = [];
       if (response.data && response.data.data && Array.isArray(response.data.data)) {
         requestData = response.data.data;
@@ -46,9 +46,9 @@ export default function ManagerDashboard() {
       } else if (Array.isArray(response)) {
         requestData = response as unknown as Request[];
       }
-      
+
       setRequests(requestData);
-      
+
       // Fetch all requests to calculate stats
       const allResponse = await getAllRequests({ limit: 100 });
       let allRequestData: Request[] = [];
@@ -59,7 +59,7 @@ export default function ManagerDashboard() {
       } else if (Array.isArray(allResponse)) {
         allRequestData = allResponse as unknown as Request[];
       }
-      
+
       const calculatedStats = calculateRequestStats(allRequestData);
       setStats(calculatedStats);
     } catch (error) {
@@ -102,9 +102,9 @@ export default function ManagerDashboard() {
 
   const handleConfirmReject = async (reason: string) => {
     if (!selectedRequest) return;
-    
+
     try {
-      await rejectRequest(selectedRequest.id, { rejectionResason: reason });
+      await rejectRequest(selectedRequest.id, { rejectionReason: reason });
       toast.success('Request rejected successfully');
       setRefreshKey(prev => prev + 1);
     } catch (error) {
@@ -125,28 +125,28 @@ export default function ManagerDashboard() {
     <>
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
-        <StatsCard 
-          label="TOTAL REQUESTS" 
-          value={stats?.total.toString() || "0"} 
-          color="text-[#2a14b4]" 
+        <StatsCard
+          label="TOTAL REQUESTS"
+          value={stats?.total.toString() || "0"}
+          color="text-[#2a14b4]"
         />
-        <StatsCard 
-          label="PENDING" 
-          value={stats?.pending.toString() || "0"} 
-          color="text-amber-600" 
-          icon={<Clock className="w-8 h-8" />} 
+        <StatsCard
+          label="PENDING"
+          value={stats?.pending.toString() || "0"}
+          color="text-amber-600"
+          icon={<Clock className="w-8 h-8" />}
         />
-        <StatsCard 
-          label="APPROVED" 
-          value={stats?.approved.toString() || "0"} 
-          color="text-green-600" 
-          icon={<CheckCircle className="w-8 h-8" />} 
+        <StatsCard
+          label="APPROVED"
+          value={stats?.approved.toString() || "0"}
+          color="text-green-600"
+          icon={<CheckCircle className="w-8 h-8" />}
         />
-        <StatsCard 
-          label="REJECTED" 
-          value={stats?.rejected.toString() || "0"} 
-          color="text-red-600" 
-          icon={<XCircle className="w-8 h-8" />} 
+        <StatsCard
+          label="REJECTED"
+          value={stats?.rejected.toString() || "0"}
+          color="text-red-600"
+          icon={<XCircle className="w-8 h-8" />}
         />
       </div>
 
@@ -205,13 +205,13 @@ export default function ManagerDashboard() {
           if (col.accessor === "actions") {
             return (
               <div className="flex items-center justify-end gap-3">
-                <button 
+                <button
                   onClick={() => handleApprove(row.id)}
                   className="bg-green-600 hover:bg-green-700 text-white px-5 py-1.5 rounded-lg text-sm font-medium transition shadow-sm"
                 >
                   Approve
                 </button>
-                <button 
+                <button
                   onClick={() => handleOpenRejectModal(row)}
                   className="border border-red-200 text-red-600 hover:bg-red-50 px-5 py-1.5 rounded-lg text-sm font-medium transition"
                 >
@@ -275,4 +275,4 @@ export default function ManagerDashboard() {
       )}
     </>
   );
-}
+}
