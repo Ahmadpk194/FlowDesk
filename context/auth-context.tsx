@@ -87,9 +87,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             localStorage.removeItem('accessToken');
             setToken(null);
             
-            // Redirect to login page with setTimeout to avoid router initialization error
+            // Redirect to home page with setTimeout to avoid router initialization error
             setTimeout(() => {
-                router.push('/login');
+                router.push('/');
             }, 0);
         }
     };

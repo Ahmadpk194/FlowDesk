@@ -48,12 +48,16 @@ export default function Home() {
       <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
-            <Link href="/" className="flex items-center gap-1 sm:gap-2 group">
+            <a 
+              href="#hero" 
+              onClick={(e) => scrollToSection(e, "hero")} 
+              className="flex items-center gap-1 sm:gap-2 group cursor-pointer hover:opacity-80 transition-opacity animate-slide-down"
+            >
               <div className="w-8 h-8 sm:w-9 sm:h-9 bg-[#4338CA] rounded-lg flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
                 <Layers className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               </div>
               <span className="text-lg sm:text-xl font-bold tracking-tight text-[#0d1c2e]">Flow<span className="text-[#4338CA]">Desk</span></span>
-            </Link>
+            </a>
             
             <div className="hidden md:flex items-center gap-8 text-sm font-medium text-[#64748B]">
               <a href="#how-it-works" onClick={(e) => scrollToSection(e, "how-it-works")} className="hover:text-[#4338CA] transition-colors">How it Works</a>
@@ -102,7 +106,7 @@ export default function Home() {
 
       <main className="flex-grow pt-16">
         {/* Hero Section */}
-        <section className="relative overflow-hidden pt-20 pb-24 lg:pt-32 lg:pb-40">
+        <section id="hero" className="relative overflow-hidden pt-20 pb-24 lg:pt-32 lg:pb-40">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-[#4338CA] text-[10px] font-bold uppercase tracking-widest mb-6">
               <span className="relative flex h-1.5 w-1.5">

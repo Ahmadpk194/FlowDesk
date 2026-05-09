@@ -85,20 +85,20 @@ export default function LoginForm() {
 
     return (
         <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center p-4">
-            <div className="w-full max-w-[400px] flex flex-col items-center">
+            <div className="w-full max-w-[440px] flex flex-col items-center">
 
                 {/* Logo */}
-                <Link href="/" className="flex flex-col items-center gap-2 mb-4 hover:opacity-80 transition-opacity">
-                    <div className="w-11 h-11 bg-[#4338CA] rounded-xl flex items-center justify-center shadow-sm">
-                        <Layers className="w-6 h-6 text-white" />
+                <Link href="/" className="flex flex-col items-center gap-3 mb-6 hover:opacity-80 transition-opacity">
+                    <div className="w-12 h-12 bg-[#4338CA] rounded-xl flex items-center justify-center shadow-lg shadow-indigo-100">
+                        <Layers className="w-7 h-7 text-white" />
                     </div>
-                    <h1 className="text-4xl font-semibold text-[#2a14b4]">
+                    <h1 className="text-4xl font-bold text-[#2a14b4] tracking-tight">
                         FlowDesk
                     </h1>
                 </Link>
 
                 {/* Card */}
-                <div className="bg-white w-full p-8 rounded-2xl border border-[#E2E8F0] shadow-sm">
+                <div className="bg-white w-full p-10 rounded-3xl border border-[#E2E8F0] shadow-xl shadow-indigo-50/50">
 
                     <div className="mb-8 text-center">
                         <h2 className="text-[22px] font-semibold text-[#0d1c2e]">
@@ -112,8 +112,8 @@ export default function LoginForm() {
                     <form onSubmit={handleSubmit} className="space-y-4">
 
                         {/* Email */}
-                        <div className="flex flex-col gap-1">
-                            <label className="text-sm font-medium text-[#464554]">
+                        <div className="flex flex-col gap-2">
+                            <label className="text-[15px] font-semibold text-[#464554]">
                                 Email address
                             </label>
 
@@ -123,19 +123,19 @@ export default function LoginForm() {
                                 onChange={handleChange}
                                 type="email"
                                 placeholder="name@company.com"
-                                className="w-full h-10 px-4 bg-white border border-[#C7C4D7] rounded-md outline-none"
+                                className="w-full h-12 px-5 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl outline-none focus:border-[#4338CA] focus:ring-4 focus:ring-indigo-50 transition-all text-[15px]"
                             />
 
                             {errors.email && (
-                                <p className="text-red-500 text-xs">
+                                <p className="text-red-500 text-xs font-medium px-1">
                                     {errors.email}
                                 </p>
                             )}
                         </div>
 
                         {/* Password */}
-                        <div className="flex flex-col gap-1">
-                            <label className="text-sm font-medium text-[#464554]">
+                        <div className="flex flex-col gap-2">
+                            <label className="text-[15px] font-semibold text-[#464554]">
                                 Password
                             </label>
 
@@ -146,7 +146,7 @@ export default function LoginForm() {
                                     onChange={handleChange}
                                     type={showPassword ? 'text' : 'password'}
                                     placeholder="••••••••"
-                                    className="w-full h-10 pl-4 pr-11 bg-white border border-[#C7C4D7] rounded-md outline-none"
+                                    className="w-full h-12 pl-5 pr-12 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl outline-none focus:border-[#4338CA] focus:ring-4 focus:ring-indigo-50 transition-all text-[15px]"
                                 />
 
                                 <button
@@ -154,7 +154,7 @@ export default function LoginForm() {
                                     onClick={() =>
                                         setShowPassword(!showPassword)
                                     }
-                                    className="absolute right-4 top-1/2 -translate-y-1/2 text-[#777586]"
+                                    className="absolute right-4 top-1/2 -translate-y-1/2 text-[#777586] hover:text-[#4338CA] transition-colors"
                                 >
                                     {showPassword ? (
                                         <EyeOff className="w-5 h-5" />
@@ -165,27 +165,29 @@ export default function LoginForm() {
                             </div>
 
                             {errors.password && (
-                                <p className="text-red-500 text-xs">
+                                <p className="text-red-500 text-xs font-medium px-1">
                                     {errors.password}
                                 </p>
                             )}
                         </div>
 
                         {/* Submit Button */}
-                        <button
-                            type="submit"
-                            disabled={loading}
-                            className="w-full h-11 bg-[#4338CA] text-white rounded-md flex items-center justify-center gap-2 disabled:opacity-70"
-                        >
-                            {loading ? (
-                                <>
-                                    <Loader2 className="w-4 h-4 animate-spin" />
-                                    Signing in...
-                                </>
-                            ) : (
-                                'Sign in'
-                            )}
-                        </button>
+                        <div className="pt-2">
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                className="w-full h-12 bg-[#4338CA] text-white rounded-xl flex items-center justify-center gap-2 disabled:opacity-70 font-bold text-[16px] shadow-lg shadow-indigo-100 hover:bg-[#372abf] hover:-translate-y-0.5 active:translate-y-0 transition-all"
+                            >
+                                {loading ? (
+                                    <>
+                                        <Loader2 className="w-5 h-5 animate-spin" />
+                                        Signing in...
+                                    </>
+                                ) : (
+                                    'Sign in to Dashboard'
+                                )}
+                            </button>
+                        </div>
                     </form>
 
                     {/* Footer */}
